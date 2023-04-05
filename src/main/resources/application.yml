@@ -12,7 +12,16 @@ spring:
     username: postgres
     password: motog
     driverClassName: org.postgresql.Driver
-
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 711070733155-blqr3jb7559b0m6sjivpoepfcvh5krqk.apps.googleusercontent.com
+            clientSecret: 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
+            scope:
+              - email
+              - profile
 logging:
   level:
     org:

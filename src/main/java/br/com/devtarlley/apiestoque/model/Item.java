@@ -1,5 +1,6 @@
 package br.com.devtarlley.apiestoque.model;
 
+import br.com.devtarlley.apiestoque.dto.ItemAtualizaDTO;
 import br.com.devtarlley.apiestoque.dto.ItemDTO;
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,5 +28,10 @@ public class Item {
     public Item(ItemDTO itemDTO) {
         this.nome = itemDTO.getNome();
         this.descricao = itemDTO.getDescricao();
+    }
+
+    public Item(ItemAtualizaDTO itemAtualizaDTO) {
+        this.nome = itemAtualizaDTO.getNome();
+        this.descricao = itemAtualizaDTO.getDescricao();
     }
 }

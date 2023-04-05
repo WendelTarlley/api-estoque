@@ -1,5 +1,6 @@
 package br.com.devtarlley.apiestoque.service;
 
+import br.com.devtarlley.apiestoque.dto.ItemAtualizaDTO;
 import br.com.devtarlley.apiestoque.dto.ItemDTO;
 import br.com.devtarlley.apiestoque.model.Item;
 import br.com.devtarlley.apiestoque.model.ItemPreco;
@@ -22,13 +23,9 @@ public class ItemService {
 
     public ItemDTO cadastrarItem(ItemDTO itemDTO){
         Item item = new Item(itemDTO);
-        ItemPreco itemPreco = new ItemPreco();
         itemRepository.save(item);
 
-        itemPreco.setPreco(itemDTO.getPreco());
-        itemPreco.setItem(item);
-
-        itemPrecoService.salvarItemPreco(itemPreco);
+        itemPrecoService.salvarItemPreco(item,itemDTO.getPreco());
 
         return itemDTO;
     }
@@ -45,4 +42,17 @@ public class ItemService {
        return null;
     }
 
+    public void atualizarItem(ItemAtualizaDTO atualizaDTO) {
+        Optional<Item> findItem = itemRepository.findById(atualizaDTO.getId());
+
+        findItem.ifPresent( value -> {
+            if (atualizaDTO.getPreco() != null){
+                itemPrecoService.salvarItemPreco(findItem.get(),atualizaDTO.getPreco());
+            }
+
+            value.setDescricao(atualizaDTO.getDescricao());
+            value.setNome(atualizaDTO.getNome());
+            itemRepository.save(value);
+        });
+    }
 }
