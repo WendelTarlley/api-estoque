@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -26,6 +25,5 @@ public class User {
 
     private String cpf;
 
-    @OneToMany
-    private List<ItemPreco> itemPreco;
+
 }
