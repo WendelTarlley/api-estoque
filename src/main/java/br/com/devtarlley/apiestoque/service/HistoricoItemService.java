@@ -4,7 +4,6 @@ import br.com.devtarlley.apiestoque.dto.ItemMovimentacaoDTO;
 import br.com.devtarlley.apiestoque.enumerated.TipoMovimento;
 import br.com.devtarlley.apiestoque.model.HistoricoItem;
 import br.com.devtarlley.apiestoque.model.Item;
-import br.com.devtarlley.apiestoque.model.User;
 import br.com.devtarlley.apiestoque.repository.HistoricoItemRepository;
 import org.springframework.stereotype.Service;
 
