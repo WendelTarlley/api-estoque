@@ -1,9 +1,11 @@
 spring:
+  application:
+    name: 'api-estoque'
   jpa:
     show-sql: true
     database: POSTGRESQL
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   datasource:
@@ -12,19 +14,21 @@ spring:
     username: postgres
     password: motog
     driverClassName: org.postgresql.Driver
+  flyway:
+    baseline-on-migrate: true
 
-
-logging:
-  level:
-    org:
-      hibernate:
-        org:
-          hibernate:
-            type:
-              descriptor:
-                sql:
-                  BasicBinder: TRACE
-            SQL: DEBUG
 jwt:
   secret: ${JWT_SECRET:$2a$12$yBwhpMD4efu41WQzcwE.p.x/ZHvjZ0cY8ozYYwP0bBXJI/iv9UzbW}
   expiration-time: 18000
+
+server:
+  port: 0
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
