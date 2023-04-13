@@ -1,32 +1,28 @@
 package br.com.devtarlley.apiestoque.dto;
 
 import br.com.devtarlley.apiestoque.model.Item;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
-public class ItemDTO {
+public class ItemMovimentacaoDTO {
+
+    @NotNull
+    private Long id;
 
     @NotBlank
     private String nome;
 
-    @NotBlank
-    private String descricao;
-
-    @NotNull
-    private BigDecimal preco;
-
-
+    @Min(value = 1,message = "Quantidade deve ser maior que 0")
     private Integer quantidade;
 
-    public ItemDTO(Item item) {
+
+    public ItemMovimentacaoDTO(Item item) {
         this.nome = item.getNome();
-        this.descricao = item.getDescricao();
-        this.quantidade = item.getQuantidade();
     }
 }

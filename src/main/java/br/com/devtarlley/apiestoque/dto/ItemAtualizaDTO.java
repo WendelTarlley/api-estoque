@@ -10,7 +10,10 @@ import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
-public class ItemDTO {
+public class ItemAtualizaDTO {
+
+    @NotNull
+    private Long id;
 
     @NotBlank
     private String nome;
@@ -18,15 +21,11 @@ public class ItemDTO {
     @NotBlank
     private String descricao;
 
-    @NotNull
     private BigDecimal preco;
 
 
-    private Integer quantidade;
-
-    public ItemDTO(Item item) {
+    public ItemAtualizaDTO(Item item) {
         this.nome = item.getNome();
         this.descricao = item.getDescricao();
-        this.quantidade = item.getQuantidade();
     }
 }
