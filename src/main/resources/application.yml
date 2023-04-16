@@ -32,3 +32,11 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+
+resilience4j.circuitbreaker:
+  instances:
+    usuarios:
+      slidingWindowSize: 3
+      minimumNumberOfCalls: 2
+      waitDurationInOpenState: 50s
