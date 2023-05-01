@@ -4,7 +4,6 @@ import br.com.devtarlley.apiestoque.dto.ItemAtualizaDTO;
 import br.com.devtarlley.apiestoque.dto.ItemDTO;
 import br.com.devtarlley.apiestoque.dto.ItemMovimentacaoDTO;
 import br.com.devtarlley.apiestoque.service.ItemService;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,25 +41,25 @@ public class ItemController {
     }
 
     @PutMapping("/entrada-item")
-    public ResponseEntity<?> entradaItem(@Valid @RequestBody ItemMovimentacaoDTO itemMovimentacaoDTO){
+    public ResponseEntity<ItemDTO> entradaItem(@Valid @RequestBody ItemMovimentacaoDTO itemMovimentacaoDTO){
         itemService.entradaItem(itemMovimentacaoDTO);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/saida-item")
-    public ResponseEntity<?> saidaItem(@Valid @RequestBody ItemMovimentacaoDTO itemMovimentacaoDTO){
+    public ResponseEntity<ItemDTO> saidaItem(@Valid @RequestBody ItemMovimentacaoDTO itemMovimentacaoDTO){
         itemService.saidaItem(itemMovimentacaoDTO);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/multipla-entrada-item")
-    public ResponseEntity<?> entradaVariosItens(@Valid @RequestBody List<ItemMovimentacaoDTO> movimentacaoDTOList){
+    public ResponseEntity<ItemDTO> entradaVariosItens(@Valid @RequestBody List<ItemMovimentacaoDTO> movimentacaoDTOList){
         itemService.entradaVariosItens(movimentacaoDTOList);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/multipla-saida-item")
-    public ResponseEntity<?> saidaVariosItens(@Valid @RequestBody List<ItemMovimentacaoDTO> movimentacaoDTOList){
+    public ResponseEntity<ItemDTO> saidaVariosItens(@Valid @RequestBody List<ItemMovimentacaoDTO> movimentacaoDTOList){
         itemService.saidaVariosItens(movimentacaoDTOList);
         return ResponseEntity.ok().build();
     }
