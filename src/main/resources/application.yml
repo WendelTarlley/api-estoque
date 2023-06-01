@@ -9,7 +9,6 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   datasource:
-    platform: postgres
     url: jdbc:postgresql://localhost:5432/estoque
     username: postgres
     password: motog

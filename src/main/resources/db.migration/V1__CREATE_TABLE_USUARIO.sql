@@ -1,4 +1,4 @@
-CREATE TABLE usuario (
+CREATE TABLE usuarios (
   id UUID NOT NULL DEFAULT uuid_generate_v4(),
    nome VARCHAR(255),
    email VARCHAR(255),
